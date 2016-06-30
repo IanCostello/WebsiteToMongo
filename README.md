@@ -2,7 +2,7 @@
 WebsiteToMongo is a configurable web crawler that downloads websites locally and then indexes the results in a mongo db dataase
 
 ##How To Configure 
-Configuration is relatively easy and mostly requires inputting values
+Configuration is relatively easy and mostly requires inputting values into indexRules.settings
 
 ## Config Explained
 ###~Defaults~
