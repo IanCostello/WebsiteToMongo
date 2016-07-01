@@ -1,0 +1,32 @@
+*********************** DELETE FROM THIS LINE
+Delete Before Running: This example indexes the downloaded website "Great Books of The World"
+*****TO THIS ONE
+~Defaults~
+followExternalLinks:false
+respectRobots:true
+
+~Basic Config~
+homepageURL: /Users/iancostello/Documents/ContentToLoad/ebooks/index.html
+websiteURL: http://www.gutenberg.org
+workingDir: /Users/iancostello/Documents/ContentToLoad/
+subdir: ebooks
+saveType: fullSite
+
+~Database Config~
+database: wikiForSchoolsTest
+collection: activities
+
+~Follow Rules~
+downloadFiles:jpg, png, gif, jpeg, tif, css, js
+linksToFollow:html, htm, php, asp
+
+~Index Rules~
+includes: body
+!includes:#searchdiv
+
+~To Index~
+ft:$fileType
+MB:$size
+dn:$linkText
+fn:$fileName
+fp:$filePath

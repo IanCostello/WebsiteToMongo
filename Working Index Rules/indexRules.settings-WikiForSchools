@@ -1,0 +1,35 @@
+*********************** DELETE FROM THIS LINE
+Delete Before Running: This is an example settings that downloads the site wikipedia
+for schools and only indexes articles.
+*****TO THIS ONE
+~Defaults~
+followExternalLinks:false
+respectRobots:true
+
+~Basic Config~
+homepageURL: http://schools-wikipedia.org
+websiteURL: http://schools-wikipedia.org
+workingDir: /Users/iancostello/Documents/mainProjects/WebsiteToJson/
+subdir: wiki
+saveType: fullSite
+
+~Database Config~
+database: wikiForSchoolsTest
+collection: activities
+
+~Follow Rules~
+downloadFiles:jpg, png, gif, jpeg, tif, css, js
+linksToFollow:html, htm, php, asp
+disallow:.png.htm
+disallow:.jpg.htm
+
+~Index Rules~
+includes: .infobox
+!url-pattern: /wp/index/ 
+
+~To Index~
+ft:$fileType
+MB:$size
+dn:#firstHeading+child(0)
+fn:$fileName
+fp:$filePath
