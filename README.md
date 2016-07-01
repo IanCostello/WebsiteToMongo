@@ -15,7 +15,7 @@ Whether to respect robots.txt, but currently not implemented
 #####homepageURL: http://www.google.com/ 
 The URL or local file of where the webcrawler should start
 #####websiteURL: http://www.google.com/ 
-URL of website, which is only required for downloaded local websites
+URL of website (if offline this is still the actual sites url)
 #####workingDir: /Users/sampleUser/Documents/testWebsites/
 Source Folder
 #####subdir: google 
@@ -74,6 +74,8 @@ The size of a file in MB
 The name of the file eg index.html
 ##### $filePath
 Full filepath from working directory google/index.html
+##### $linkText
+The text of value of a link that points to the page
 ####Literals
 Denotes by text inside of ' or " it is always read as such 
 ####Commands
