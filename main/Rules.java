@@ -8,8 +8,11 @@ package main;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.jsoup.nodes.Document;
@@ -30,6 +33,7 @@ public class Rules {
 	
 	//To Index
 	private static ArrayList<Index> toIndex;
+	private static Map<String, String> nameByURL;
 	
 	//Other Rules
 	private static boolean followExternalLinks;
@@ -69,6 +73,7 @@ public class Rules {
 		selectorsToDisclude = new HashSet<String>();
 		linksToDisclude = new HashSet<String>();
 		toIndex = new ArrayList<Index>();
+		nameByURL = new HashMap<String, String>();
 
 		//Load Properties Files
 		String workingDir = System.getProperty("user.dir")+'/';
@@ -148,7 +153,7 @@ public class Rules {
 				saveType = property;
 				break;
 			case "websiteURL":
-				saveType = property;
+				websiteURL = property;
 				break;
 			case "contentType":
 				contentType = property;
@@ -235,7 +240,7 @@ public class Rules {
 		//Otherwise ensure it is on local site 
 		} else {
 			return ((setNotContainsAbsURL(linksToDisclude, absURL)
-					&& absURL.contains(homepage) && linksToFollow.contains(lowerCase)));
+					&& absURL.contains(websiteURL) && linksToFollow.contains(lowerCase)));
 		}
 	}
 	
@@ -340,6 +345,9 @@ public class Rules {
 					break;
 				case "$filePath":
 					valToInput = filePath;
+					break;
+				case "$linkText":					
+					valToInput = nameByURL.get(savLoc);
 					break;
 				}
 			//Otherwise if text is a literal statement remove comma's
@@ -520,6 +528,10 @@ public class Rules {
 	}
 	public static String getCollection() {
 		return collection;
+	}
+	
+	public static void putURLByName(String url, String name) {
+		nameByURL.put(url, name);
 	}
 
 	/** Index */
